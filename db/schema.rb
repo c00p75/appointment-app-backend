@@ -22,9 +22,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_13_095328) do
     t.decimal "finance_fee"
     t.decimal "purchase_fee"
     t.decimal "amount_payable"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["id"], name: "index_motorcycles_on_id", unique: true
     t.index ["user_id"], name: "index_motorcycles_on_user_id"
   end
 
