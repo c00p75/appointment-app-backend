@@ -1,5 +1,5 @@
 class MotorcyclesController < ApplicationController
-  before_action :set_motorcycle, only: [:show, :delete]
+  before_action :set_motorcycle, only: [:show, :destroy]
 
   def index
     @motorcycles = Motorcycle.all
@@ -19,7 +19,7 @@ class MotorcyclesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @motorcycle.destroy
     render json: { message: 'Motorcycle deleted successfully' }
   end
