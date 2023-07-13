@@ -1,5 +1,5 @@
 class MotorcyclesController < ApplicationController
-  before_action :set_motorcycle, only: [:show, :destroy]
+  before_action :set_motorcycle, only: %i[show destroy]
 
   def index
     @motorcycles = Motorcycle.all
@@ -31,6 +31,7 @@ class MotorcyclesController < ApplicationController
   end
 
   def motorcycle_params
-    params.require(:motorcycle).permit(:model, :description, :photo, :duration, :finance_fee, :purchase_fee, :amount_payable, :user_id)
+    params.require(:motorcycle).permit(:model, :description, :photo, :duration, :finance_fee, :purchase_fee,
+                                       :amount_payable, :user_id)
   end
 end
