@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
   before_action :update_allowed_parameters, if: :devise_controller?
 
   skip_before_action :verify_authenticity_token, raise: false
-  before_action :authenticate_devise_api_token!, unless: [:devise_controller?, :get_request?]
+  before_action :authenticate_devise_api_token!, unless: %i[devise_controller? request_method_is_get?]
 
   def resource_class
     User
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def get_request?
-    request.method == "GET"
+  def request_method_is_get?
+    request.method == 'GET'
   end
 end
