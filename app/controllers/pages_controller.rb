@@ -2,10 +2,12 @@ class PagesController < ApplicationController
   skip_before_action :verify_authenticity_token, raise: false
   before_action :authenticate_devise_api_token!, only: [:restricted]
 
-  def home
-  end
+  def home; end
 
-  def restricted    
+  def restricted
+    devise_api_token = current_devise_api_token
+
+    p 'devise_api_token----------------', devise_api_token, devise_api_token.resource_owner
     if devise_api_token
       render json: { message: "You are logged in as #{devise_api_token.resource_owner.email}" }, status: :ok
     else
