@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'pages/home'
+  get 'pages/restricted'
   devise_for :users
 
   resources :motorcycles, only: [:index, :show, :create, :destroy]

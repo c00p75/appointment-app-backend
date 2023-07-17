@@ -1,5 +1,5 @@
 class MotorcyclesController < ApplicationController
-  before_action :set_motorcycle, only: %i[show destroy]
+  load_and_authorize_resource
 
   def index
     @motorcycles = Motorcycle.all
@@ -20,8 +20,11 @@ class MotorcyclesController < ApplicationController
   end
 
   def destroy
-    @motorcycle.destroy
-    render json: { message: 'Motorcycle deleted successfully' }
+    if @motorcycle.destroy
+      render json: { message: 'Motorcycle deleted successfully' }
+    else
+      render json: { message: 'You are not authorized to delete the item' }, status: :unauthorized
+    end
   end
 
   private

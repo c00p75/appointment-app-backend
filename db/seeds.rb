@@ -39,6 +39,13 @@ vespa_models = [
   }
 ]
 
-vespa_models.each do |vespa|
-  Motorcycle.create!(vespa)
+first_user = User.create(username: 'user1', email: 'user1@mail.com', password: '123456')
+second_user = User.create(username: 'user2', email: 'user2@mail.com', password: '123456')
+
+vespa_models.each_with_index do |vespa, index|
+  if index % 2 == 0
+    first_user.motorcycles.create!(vespa)
+  else
+    second_user.motorcycles.create!(vespa)
+  end
 end

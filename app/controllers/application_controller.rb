@@ -3,6 +3,7 @@ class ApplicationController < ActionController::API
 
   skip_before_action :verify_authenticity_token, raise: false
   before_action :authenticate_devise_api_token!, unless: %i[devise_controller? request_method_is_get?]
+  before_action :set_current_user!, unless: %i[devise_controller?]
 
   def resource_class
     User
@@ -19,5 +20,10 @@ class ApplicationController < ActionController::API
 
   def request_method_is_get?
     request.method == 'GET'
+  end
+
+  def set_current_user!
+    devise_api_token = current_devise_api_token
+    @current_user = devise_api_token&.resource_owner
   end
 end
