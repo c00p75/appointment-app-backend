@@ -1,7 +1,6 @@
 class Motorcycle < ApplicationRecord
   belongs_to :user, optional: true
   has_many :reservations
-  has_one_attached :photo
 
   validates :model, presence: true
   validates :description, presence: true
@@ -10,4 +9,6 @@ class Motorcycle < ApplicationRecord
   validates :finance_fee, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :purchase_fee, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :amount_payable, presence: true, numericality: { greater_than_or_equal_to: 0 }
+
+  mount_uploader :photo, PhotoUploader # mounting uploader to appropriate attribute
 end

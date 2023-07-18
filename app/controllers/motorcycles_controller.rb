@@ -11,7 +11,7 @@ class MotorcyclesController < ApplicationController
   end
 
   def create
-    @motorcycle = Motorcycle.new(motorcycle_params)
+    @motorcycle = @current_user.motorcycles.build(motorcycle_params)
     if @motorcycle.save
       render json: @motorcycle, status: :created
     else
