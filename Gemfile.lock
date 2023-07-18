@@ -239,6 +239,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activestorage (~> 7.0)
   bootsnap
   cancancan
   debug

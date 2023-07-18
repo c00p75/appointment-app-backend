@@ -1,6 +1,7 @@
 class Motorcycle < ApplicationRecord
   belongs_to :user, optional: true
   has_many :reservations
+  has_one_attached :photo
 
   validates :model, presence: true
   validates :description, presence: true
