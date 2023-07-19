@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.includes(:motorcycle).all
     render json: @reservations,
-                include: [motorcycle: { only: %i[id model photo purchase_fee finance_fee amount_payable duration] }]
+           include: [motorcycle: { only: %i[id model photo purchase_fee finance_fee amount_payable duration] }]
   end
 
   # POST /reservations
