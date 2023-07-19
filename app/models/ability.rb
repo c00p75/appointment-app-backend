@@ -7,6 +7,7 @@ class Ability
     can :read, :all
     return unless user.present?
 
+    can :manage, Reservation, user_id: user.id
     can :manage, Motorcycle, user_id: user.id
 
     # The first argument to `can` is the action you are giving the user
