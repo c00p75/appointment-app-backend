@@ -3,6 +3,8 @@ class ReservationsController < ApplicationController
 
   # GET /reservations
   def index
+    return render json: [] unless @current_user
+
     @reservations = @current_user.reservations.includes(:motorcycle)
     render json: @reservations,
            include: [motorcycle: { only: %i[id model photo purchase_fee finance_fee amount_payable duration] }]
