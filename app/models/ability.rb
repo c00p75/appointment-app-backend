@@ -7,6 +7,7 @@ class Ability
     can :read, :all
     return unless user.present?
 
+    can :read, Reservation, user_id: user.id
     can :manage, Reservation, user_id: user.id
     can :manage, Motorcycle, user_id: user.id
 
