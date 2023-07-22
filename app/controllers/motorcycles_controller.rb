@@ -6,6 +6,11 @@ class MotorcyclesController < ApplicationController
     render json: @motorcycles
   end
 
+  def user_motorcycles
+    @user_motorcycles = current_user.motorcycles
+    render json: @user_motorcycles
+  end
+
   def show
     render json: @motorcycle
   end

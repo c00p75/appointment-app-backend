@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get 'pages/restricted'
   devise_for :users
 
-  resources :motorcycles, only: [:index, :show, :create, :destroy]
+  resources :motorcycles, only: [:index, :show, :create, :destroy] do
+    collection do
+      get 'user_motorcycles'
+    end
+  end
   resources :reservations, only: [:index, :create, :destroy]
   
 
