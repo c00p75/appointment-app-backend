@@ -1,9 +1,12 @@
 class ReservationsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_reservation, only: [:destroy]
 
   # GET /reservations
   def index
-    @reservations = Reservation.includes(:motorcycle).all
+    return render json: [] unless @current_user
+
+    @reservations = @current_user.reservations.includes(:motorcycle)
     render json: @reservations,
            include: [motorcycle: { only: %i[id model photo purchase_fee finance_fee amount_payable duration] }]
   end
