@@ -11,6 +11,7 @@
   - [Usage](#usage)
   - [Run tests](#run-tests)
   - [Deployment](#deployment)
+- [📝 API documentation](#license)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -114,6 +115,14 @@ To run tests
 You can deploy this project using: [render](https://render.com/).
 
 <p align="right">(<a href="#table-of-contents">back to top</a>)</p>
+
+## API Documentation
+
+**Once connected to the database, you can check the full API Documentation in here (please, double check the port):**
+```
+//127.0.0.1:3050/api-docs/
+```
+ 
 
 ## Authors <a name="authors"></a>
 
