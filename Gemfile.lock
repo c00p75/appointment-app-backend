@@ -145,6 +145,8 @@ GEM
     irb (1.7.2)
       reline (>= 0.3.6)
     json (2.6.3)
+    json-schema (3.0.0)
+      addressable (>= 2.8)
     language_server-protocol (3.17.0.3)
     loofah (2.21.3)
       crass (~> 1.0.2)
@@ -295,6 +297,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.6)
   rspec-rails (~> 5.0)
+  rswag
   rubocop
   shoulda-matchers
   tzinfo-data
