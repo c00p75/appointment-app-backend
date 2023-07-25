@@ -16,7 +16,9 @@ class ReservationsController < ApplicationController
     @reservation = @current_user.reservations.build(reservation_params)
 
     if @reservation.save
-      render json: @reservation, status: :created
+      render json: @reservation,
+             include: [motorcycle: { only: %i[id model photo purchase_fee finance_fee amount_payable duration] }],
+             status: :created
     else
       render json: @reservation.errors, status: :unprocessable_entity
     end
