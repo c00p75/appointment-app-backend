@@ -48,6 +48,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0'
   gem 'rubocop'
   gem 'shoulda-matchers', require: false
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -56,3 +57,10 @@ group :development do
 end
 
 gem 'carrierwave'
+
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
+end
