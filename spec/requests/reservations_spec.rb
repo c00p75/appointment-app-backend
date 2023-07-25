@@ -15,14 +15,14 @@ RSpec.describe ReservationsController, type: :system do
       amount_payable: 5000,
       user: @user
     }
-    post '/users/tokens/sign_in', params: { email: 'test@example.com', password: 'password' }    
+    post '/users/tokens/sign_in', params: { email: 'test@example.com', password: 'password' }
     @token = JSON.parse(response.body)['token']
     @motor_cycle = Motorcycle.create!(@motor_params)
   end
 
   it 'Should be able to view current reservations' do
-    get '/reservations', headers: { 'Authorization': "Bearer #{@token}"}
-    expect(response.body).to eq("[]")
+    get '/reservations', headers: { Authorization: "Bearer #{@token}" }
+    expect(response.body).to eq('[]')
   end
 
   it 'Should be able to create a reservation' do
@@ -32,7 +32,7 @@ RSpec.describe ReservationsController, type: :system do
         date: '02-02-2023',
         motorcycle_id: @motor_cycle.id
       }
-    }, headers: { 'Authorization': "Bearer #{@token}"}
+    }, headers: { Authorization: "Bearer #{@token}" }
     expect(response).to have_http_status(:success)
   end
 
@@ -43,7 +43,7 @@ RSpec.describe ReservationsController, type: :system do
         date: '02-02-2023',
         motorcycle_id: nil
       }
-    }, headers: { 'Authorization': "Bearer #{@token}"}
+    }, headers: { Authorization: "Bearer #{@token}" }
     expect(response).to have_http_status(:unprocessable_entity)
   end
 
@@ -54,7 +54,7 @@ RSpec.describe ReservationsController, type: :system do
       user_id: @user.id,
       motorcycle_id: @motor_cycle.id
     )
-    delete "/reservations/#{reservation.id}", headers: { 'Authorization': "Bearer #{@token}"}
+    delete "/reservations/#{reservation.id}", headers: { Authorization: "Bearer #{@token}" }
     expect(response).to have_http_status(:success)
   end
 end

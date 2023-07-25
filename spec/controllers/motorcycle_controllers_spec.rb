@@ -24,17 +24,26 @@ RSpec.describe MotorcyclesController, type: :controller do
     it 'assigns all motorcycles to @motorcycles' do
       Motorcycle.delete_all
       motorcycle1 = Motorcycle.create(model: 'Sample Model', description: 'Sample Description',
-                                  photo: Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'test_photo.jpg'),
-                                                                  'image/jpeg'), duration: 5, finance_fee: 1000, purchase_fee: 200,
-                                  amount_payable: 5000, user:)
+                                      photo: Rack::Test::UploadedFile.new(Rails.root.join('spec',
+                                                                                          'fixtures',
+                                                                                          'test_photo.jpg'),
+                                                                          'image/jpeg'),
+                                      duration: 5,
+                                      finance_fee: 1000, purchase_fee: 200,
+                                      amount_payable: 5000, user:)
 
       motorcycle2 = Motorcycle.create(model: 'Sample Model', description: 'Sample Description',
-                                  photo: Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'test_photo.jpg'),
-                                                                  'image/jpeg'), duration: 5, finance_fee: 1000, purchase_fee: 200,
-                                  amount_payable: 5000, user:)
+                                      photo: Rack::Test::UploadedFile.new(Rails.root.join('spec',
+                                                                                          'fixtures',
+                                                                                          'test_photo.jpg'),
+                                                                          'image/jpeg'),
+                                      duration: 5,
+                                      finance_fee: 1000,
+                                      purchase_fee: 200,
+                                      amount_payable: 5000, user:)
 
       motorcycles = [motorcycle1, motorcycle2]
-      @motorcycles = motorcycles.select { |motorcycle| motorcycle.id % 2 == 0 }
+      @motorcycles = motorcycles.select { |motorcycle| motorcycle.id.even? }
       get :index
       expect(assigns(:motorcycles)).to match_array([motorcycle1, motorcycle2])
     end
@@ -55,7 +64,6 @@ RSpec.describe MotorcyclesController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-
     it 'returns unauthorized status when the user is not authorized to delete' do
       sign_out user
       unauthorized_user = User.new(email: 'unauthorized@example.com', password: 'password')

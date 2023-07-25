@@ -16,14 +16,14 @@ RSpec.describe MotorcyclesController, type: :system do
       amount_payable: 5000,
       user: @user
     }
-    post '/users/tokens/sign_in', params: { email: 'test@example.com', password: 'password' }    
+    post '/users/tokens/sign_in', params: { email: 'test@example.com', password: 'password' }
     @token = JSON.parse(response.body)['token']
     @motor_cycle = Motorcycle.create!(@motor_params)
   end
 
   describe 'GET #index' do
     it 'returns a successful response' do
-      get '/motorcycles', headers: { 'Authorization': "Bearer #{@token}"}
+      get '/motorcycles', headers: { Authorization: "Bearer #{@token}" }
       expect(response).to be_successful
     end
   end
@@ -55,20 +55,19 @@ RSpec.describe MotorcyclesController, type: :system do
     end
 
     it 'creates a new motorcycle with valid params' do
-      post '/motorcycles', params: { motorcycle: valid_params }, headers: { 'Authorization': "Bearer #{@token}"}
+      post '/motorcycles', params: { motorcycle: valid_params }, headers: { Authorization: "Bearer #{@token}" }
       expect(response).to have_http_status(:created)
     end
 
-
     it 'does not create a new motorcycle with invalid params' do
-      post '/motorcycles', params: { motorcycle: invalid_params }, headers: { 'Authorization': "Bearer #{@token}"}
+      post '/motorcycles', params: { motorcycle: invalid_params }, headers: { Authorization: "Bearer #{@token}" }
       expect(response).to have_http_status(:unprocessable_entity)
     end
   end
 
   describe 'DELETE #destroy' do
     it 'deletes the motorcycle' do
-      delete "/motorcycles/#{@motor_cycle.id}", headers: { 'Authorization': "Bearer #{@token}"}
+      delete "/motorcycles/#{@motor_cycle.id}", headers: { Authorization: "Bearer #{@token}" }
       expect(response).to have_http_status(:success)
     end
 
