@@ -12,6 +12,7 @@
   - [Run tests](#run-tests)
   - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
+- [Kanban Board](#kanban)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
@@ -132,7 +133,21 @@ You can deploy this project using: [render](https://render.com/).
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/william-sserubiri-veronica/)
 
 
-## 🔭 Future Features <a name="future-features"></a>
+<p align="right">(<a href="#table-of-contents">back to top</a>)</p>
+
+## Kanban
+The workload for the project was distributed using a Kanban board.
+- [Kanban board](https://github.com/users/c00p75/projects/3)
+- [Kanban's initial state](https://github.com/c00p75/appointment-app-backend/issues/11)
+- Number of team members: 4
+
+<p align="right">(<a href="#table-of-contents">back to top</a>)</p>
+
+## Future Features <a name="future-features"></a>
+
+- **Add user confirmation**
+- **Delete reservations**
+- **Edit moto description**
 
 - **Add user authentication**
 
