@@ -1,0 +1,18 @@
+databases:
+  - name: cycle-cruise-db
+    databaseName: cycle_cruise_db
+    user: cycle_cruise_db_user
+
+services:
+  - type: web
+    name: cycle_cruise_db
+    runtime: ruby
+    buildCommand: './bin/render-build.sh'
+    startCommand: 'bundle exec puma -C config/puma.rb'
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: cycle-cruise-db
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false

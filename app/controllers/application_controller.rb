@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  before_action :update_request_parameters, if: :devise_is_sign_in?
   before_action :update_allowed_parameters, if: :devise_controller?
 
   skip_before_action :verify_authenticity_token, raise: false
@@ -25,5 +26,24 @@ class ApplicationController < ActionController::API
   def set_current_user!
     devise_api_token = current_devise_api_token
     @current_user = devise_api_token&.resource_owner
+  end
+
+  def update_request_parameters
+    return if email?(params[:email])
+
+    user = User.where('LOWER(username) = ?', params[:email].downcase).first
+    return unless user.present?
+
+    params[:email] = user.email
+  end
+
+  def devise_is_sign_in?
+    devise_controller? && params[:action] == 'sign_in'
+  end
+
+  def email?(email)
+    email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+    email =~ email_regex
   end
 end
