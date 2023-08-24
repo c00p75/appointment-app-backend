@@ -21,4 +21,4 @@ production:
   url: <%= ENV['DATABASE_URL'] %>
   database: c00p75_db
   username: c00p75
-  password: <%= ENV.fetch('APPOINTMENT_APP_BACKEND_DATABASE_PASSWORD') %>
+  password: iCvPsaSDNFi7x20GoxmIorCFg3ZF3ERw
