@@ -18,6 +18,8 @@ test:
 
 production:
   <<: *default
-  database: appointment_app_backend_production
-  username: appointment_app_backend
+  url: <%= ENV['DATABASE_URL'] %>
+  port: 5432
+  database: c00p75_db
+  username: c00p75
   password: <%= ENV["APPOINTMENT_APP_BACKEND_DATABASE_PASSWORD"] %>
