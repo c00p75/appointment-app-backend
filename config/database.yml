@@ -22,4 +22,4 @@ production:
   port: 5432
   database: c00p75_db
   username: c00p75
-  password: iCvPsaSDNFi7x20GoxmIorCFg3ZF3ERw
+  password: ENV['APPOINTMENT_APP_BACKEND_DATABASE_PASSWORD']
