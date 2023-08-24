@@ -19,7 +19,6 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  port: 5432
   database: c00p75_db
   username: c00p75
   password: <%= ENV["APPOINTMENT_APP_BACKEND_DATABASE_PASSWORD"] %>
