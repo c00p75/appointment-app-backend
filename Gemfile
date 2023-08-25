@@ -58,7 +58,7 @@ end
 
 gem 'carrierwave'
 gem 'carrierwave-aws'
-gem "aws-sdk-s3", require: false
+gem "aws-sdk-s3"
 # gem "fog-aws"
 
 group :test do
