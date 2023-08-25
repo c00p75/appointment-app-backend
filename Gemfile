@@ -57,8 +57,9 @@ group :development do
 end
 
 gem 'carrierwave'
-gem "aws-sdk-s3", require: false
-gem "fog-aws"
+gem 'carrierwave-aws'
+# gem "aws-sdk-s3", require: false
+# gem "fog-aws"
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]

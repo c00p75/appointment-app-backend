@@ -20,5 +20,4 @@ services:
         sync: false
       - key: AWS_SECRET_KEY
         sync: false
-      - key: AWS_REGION
-        sync: false
+        
