@@ -18,4 +18,6 @@ CarrierWave.configure do |config|
     region:            "us-east-1", # Required
     stub_responses:    Rails.env.test? # Optional, avoid hitting S3 actual during tests
   }
+
+  puts "AWS SDK region: #{config.aws_credentials[:region]}"
 end
