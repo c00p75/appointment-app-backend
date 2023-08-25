@@ -1,6 +1,6 @@
 CarrierWave.configure do |config|
   config.storage    = :aws
-  config.aws_bucket = 'c00p75'
+  config.aws_bucket = 'c00p75-cycle-cruise'
   config.aws_acl    = 'private'
 
   # The maximum period for authenticated_urls is only 7 days.
@@ -15,7 +15,7 @@ CarrierWave.configure do |config|
   config.aws_credentials = {
     access_key_id:     ENV['AWS_ACCESS_KEY'],
     secret_access_key: ENV['AWS_SECRET_KEY'],
-    region:            'us-west-2', # Required
+    region:            'us-east-1', # Required
     stub_responses:    Rails.env.test? # Optional, avoid hitting S3 actual during tests
   }
 end
