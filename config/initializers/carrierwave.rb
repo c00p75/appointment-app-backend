@@ -18,4 +18,6 @@ CarrierWave.configure do |config|
     region:            'us-east-1', # Required
     stub_responses:    Rails.env.test? # Optional, avoid hitting S3 actual during tests
   }
+
+  config.aws_client = Aws::S3::Client.new(region: 'us-east-1')
 end
