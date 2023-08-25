@@ -15,9 +15,7 @@ CarrierWave.configure do |config|
   config.aws_credentials = {
     access_key_id:     ENV['AWS_ACCESS_KEY'],
     secret_access_key: ENV['AWS_SECRET_KEY'],
-    region:            'us-east-1', # Required
+    region:            "us-east-1", # Required
     stub_responses:    Rails.env.test? # Optional, avoid hitting S3 actual during tests
   }
-
-  config.aws_client = Aws::S3::Client.new(region: 'us-east-1')
 end
